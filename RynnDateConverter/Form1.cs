@@ -59,7 +59,20 @@ namespace RynnDateConverter
 
         protected void UpdateRynnDisplay()
         {
+            RynnFormatDate rfd = MyDate.RynnDate;
+            comboBoxRynnEra.SelectedIndex = rfd.Era - 1;
+            textBoxRynnYear.Text = rfd.Year.ToString();
+            comboBoxRynnMonth.SelectedIndex = rfd.Month - 1;
+            numericUpDownRynnDay.Value = rfd.Day;
 
+            if(rfd.OnEraBoundary)
+            {
+                labelRynnEra.Text = "On Era Boundary";
+            }
+            else
+            {
+                labelRynnEra.Text = "";
+            }
         }
 
         protected void UpdateStandardDisplay()
