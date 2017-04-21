@@ -8,12 +8,12 @@ namespace RynnDateConverter
 {
     public struct EarthFormatDate
     {
-        int Year;
-        int Month;
-        int Day;
-        int Hour;
-        int Minute;
-        int Second;
+        public int Year;
+        public int Month;
+        public int Day;
+        public int Hour;
+        public int Minute;
+        public int Second;
 
         public EarthFormatDate(int year, int month, int day, int hour, int minute, int second)
         {
@@ -58,7 +58,7 @@ namespace RynnDateConverter
         {
             get
             {
-
+                return ConvertToUnixTime(InternalDate);
             }
         }
 
@@ -80,17 +80,20 @@ namespace RynnDateConverter
 
         public MultiformatDate(EarthFormatDate fromDate) //fucking Objective-C influence
         {
-            throw new NotImplementedException();
+            InternalDate = new DateTime(fromDate.Year, fromDate.Month, fromDate.Day, fromDate.Hour, fromDate.Minute, fromDate.Second, DateTimeKind.Utc);
+            Console.WriteLine(InternalDate.ToString());
         }
 
         public MultiformatDate(RynnFormatDate fromDate)
         {
+            //this is gonna suck
             throw new NotImplementedException();
         }
 
         public MultiformatDate(long fromTimestamp)
         {
-            throw new NotImplementedException();
+            InternalDate = UnixTimeToDateTime(fromTimestamp);
+            Console.WriteLine(InternalDate.ToString());
         }
 
         //UNIX converters stolen from http://www.fluxbytes.com/csharp/convert-datetime-to-unix-time-in-c/

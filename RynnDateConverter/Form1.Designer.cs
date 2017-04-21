@@ -29,28 +29,28 @@
         private void InitializeComponent()
         {
             this.groupBoxEarth = new System.Windows.Forms.GroupBox();
-            this.comboBoxEarthMonth = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxEarthYear = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numericUpDownEarthDay = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDownEarthHour = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownEarthMinute = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownEarthSecond = new System.Windows.Forms.NumericUpDown();
-            this.groupBoxRynn = new System.Windows.Forms.GroupBox();
             this.buttonEarthCalculate = new System.Windows.Forms.Button();
+            this.numericUpDownEarthSecond = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownEarthMinute = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownEarthHour = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.numericUpDownEarthDay = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxEarthYear = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxEarthMonth = new System.Windows.Forms.ComboBox();
+            this.groupBoxRynn = new System.Windows.Forms.GroupBox();
             this.groupBoxStandard = new System.Windows.Forms.GroupBox();
+            this.textBoxStandard = new System.Windows.Forms.TextBox();
+            this.buttonStandardCalculate = new System.Windows.Forms.Button();
             this.groupBoxGalactic = new System.Windows.Forms.GroupBox();
             this.buttonGalacticCalculate = new System.Windows.Forms.Button();
-            this.buttonStandardCalculate = new System.Windows.Forms.Button();
-            this.textBoxStandard = new System.Windows.Forms.TextBox();
             this.groupBoxEarth.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthDay)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthHour)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthMinute)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthSecond)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthMinute)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthHour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthDay)).BeginInit();
             this.groupBoxStandard.SuspendLayout();
             this.groupBoxGalactic.SuspendLayout();
             this.SuspendLayout();
@@ -75,54 +75,35 @@
             this.groupBoxEarth.TabStop = false;
             this.groupBoxEarth.Text = "Earth Dates";
             // 
-            // comboBoxEarthMonth
+            // buttonEarthCalculate
             // 
-            this.comboBoxEarthMonth.FormattingEnabled = true;
-            this.comboBoxEarthMonth.Location = new System.Drawing.Point(189, 50);
-            this.comboBoxEarthMonth.Name = "comboBoxEarthMonth";
-            this.comboBoxEarthMonth.Size = new System.Drawing.Size(195, 24);
-            this.comboBoxEarthMonth.TabIndex = 0;
+            this.buttonEarthCalculate.Location = new System.Drawing.Point(707, 94);
+            this.buttonEarthCalculate.Name = "buttonEarthCalculate";
+            this.buttonEarthCalculate.Size = new System.Drawing.Size(200, 40);
+            this.buttonEarthCalculate.TabIndex = 10;
+            this.buttonEarthCalculate.Text = "Calculate";
+            this.buttonEarthCalculate.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // numericUpDownEarthSecond
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Year";
+            this.numericUpDownEarthSecond.Location = new System.Drawing.Point(739, 48);
+            this.numericUpDownEarthSecond.Name = "numericUpDownEarthSecond";
+            this.numericUpDownEarthSecond.Size = new System.Drawing.Size(61, 22);
+            this.numericUpDownEarthSecond.TabIndex = 9;
             // 
-            // textBoxEarthYear
+            // numericUpDownEarthMinute
             // 
-            this.textBoxEarthYear.Location = new System.Drawing.Point(39, 50);
-            this.textBoxEarthYear.Name = "textBoxEarthYear";
-            this.textBoxEarthYear.Size = new System.Drawing.Size(100, 22);
-            this.textBoxEarthYear.TabIndex = 2;
+            this.numericUpDownEarthMinute.Location = new System.Drawing.Point(672, 48);
+            this.numericUpDownEarthMinute.Name = "numericUpDownEarthMinute";
+            this.numericUpDownEarthMinute.Size = new System.Drawing.Size(61, 22);
+            this.numericUpDownEarthMinute.TabIndex = 8;
             // 
-            // label2
+            // numericUpDownEarthHour
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(186, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Month";
-            // 
-            // numericUpDownEarthDay
-            // 
-            this.numericUpDownEarthDay.Location = new System.Drawing.Point(436, 49);
-            this.numericUpDownEarthDay.Name = "numericUpDownEarthDay";
-            this.numericUpDownEarthDay.Size = new System.Drawing.Size(120, 22);
-            this.numericUpDownEarthDay.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(436, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 16);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Day";
+            this.numericUpDownEarthHour.Location = new System.Drawing.Point(605, 48);
+            this.numericUpDownEarthHour.Name = "numericUpDownEarthHour";
+            this.numericUpDownEarthHour.Size = new System.Drawing.Size(61, 22);
+            this.numericUpDownEarthHour.TabIndex = 7;
             // 
             // label4
             // 
@@ -133,26 +114,54 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Time (HH:MM:SS)";
             // 
-            // numericUpDownEarthHour
+            // label3
             // 
-            this.numericUpDownEarthHour.Location = new System.Drawing.Point(605, 48);
-            this.numericUpDownEarthHour.Name = "numericUpDownEarthHour";
-            this.numericUpDownEarthHour.Size = new System.Drawing.Size(61, 22);
-            this.numericUpDownEarthHour.TabIndex = 7;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(436, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 16);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Day";
             // 
-            // numericUpDownEarthMinute
+            // numericUpDownEarthDay
             // 
-            this.numericUpDownEarthMinute.Location = new System.Drawing.Point(672, 48);
-            this.numericUpDownEarthMinute.Name = "numericUpDownEarthMinute";
-            this.numericUpDownEarthMinute.Size = new System.Drawing.Size(61, 22);
-            this.numericUpDownEarthMinute.TabIndex = 8;
+            this.numericUpDownEarthDay.Location = new System.Drawing.Point(436, 49);
+            this.numericUpDownEarthDay.Name = "numericUpDownEarthDay";
+            this.numericUpDownEarthDay.Size = new System.Drawing.Size(120, 22);
+            this.numericUpDownEarthDay.TabIndex = 4;
             // 
-            // numericUpDownEarthSecond
+            // label2
             // 
-            this.numericUpDownEarthSecond.Location = new System.Drawing.Point(739, 48);
-            this.numericUpDownEarthSecond.Name = "numericUpDownEarthSecond";
-            this.numericUpDownEarthSecond.Size = new System.Drawing.Size(61, 22);
-            this.numericUpDownEarthSecond.TabIndex = 9;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(186, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Month";
+            // 
+            // textBoxEarthYear
+            // 
+            this.textBoxEarthYear.Location = new System.Drawing.Point(39, 50);
+            this.textBoxEarthYear.Name = "textBoxEarthYear";
+            this.textBoxEarthYear.Size = new System.Drawing.Size(100, 22);
+            this.textBoxEarthYear.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(36, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Year";
+            // 
+            // comboBoxEarthMonth
+            // 
+            this.comboBoxEarthMonth.FormattingEnabled = true;
+            this.comboBoxEarthMonth.Location = new System.Drawing.Point(189, 50);
+            this.comboBoxEarthMonth.Name = "comboBoxEarthMonth";
+            this.comboBoxEarthMonth.Size = new System.Drawing.Size(195, 24);
+            this.comboBoxEarthMonth.TabIndex = 0;
             // 
             // groupBoxRynn
             // 
@@ -162,15 +171,6 @@
             this.groupBoxRynn.TabIndex = 1;
             this.groupBoxRynn.TabStop = false;
             this.groupBoxRynn.Text = "Rynn Dates";
-            // 
-            // buttonEarthCalculate
-            // 
-            this.buttonEarthCalculate.Location = new System.Drawing.Point(707, 94);
-            this.buttonEarthCalculate.Name = "buttonEarthCalculate";
-            this.buttonEarthCalculate.Size = new System.Drawing.Size(200, 40);
-            this.buttonEarthCalculate.TabIndex = 10;
-            this.buttonEarthCalculate.Text = "Calculate";
-            this.buttonEarthCalculate.UseVisualStyleBackColor = true;
             // 
             // groupBoxStandard
             // 
@@ -182,6 +182,23 @@
             this.groupBoxStandard.TabIndex = 2;
             this.groupBoxStandard.TabStop = false;
             this.groupBoxStandard.Text = "Standard Timestamp";
+            // 
+            // textBoxStandard
+            // 
+            this.textBoxStandard.Location = new System.Drawing.Point(39, 46);
+            this.textBoxStandard.Name = "textBoxStandard";
+            this.textBoxStandard.Size = new System.Drawing.Size(517, 22);
+            this.textBoxStandard.TabIndex = 2;
+            // 
+            // buttonStandardCalculate
+            // 
+            this.buttonStandardCalculate.Location = new System.Drawing.Point(783, 21);
+            this.buttonStandardCalculate.Name = "buttonStandardCalculate";
+            this.buttonStandardCalculate.Size = new System.Drawing.Size(124, 73);
+            this.buttonStandardCalculate.TabIndex = 1;
+            this.buttonStandardCalculate.Text = "Calculate";
+            this.buttonStandardCalculate.UseVisualStyleBackColor = true;
+            this.buttonStandardCalculate.Click += new System.EventHandler(this.buttonStandardCalculate_Click);
             // 
             // groupBoxGalactic
             // 
@@ -202,22 +219,6 @@
             this.buttonGalacticCalculate.Text = "Calculate";
             this.buttonGalacticCalculate.UseVisualStyleBackColor = true;
             // 
-            // buttonStandardCalculate
-            // 
-            this.buttonStandardCalculate.Location = new System.Drawing.Point(783, 21);
-            this.buttonStandardCalculate.Name = "buttonStandardCalculate";
-            this.buttonStandardCalculate.Size = new System.Drawing.Size(124, 73);
-            this.buttonStandardCalculate.TabIndex = 1;
-            this.buttonStandardCalculate.Text = "Calculate";
-            this.buttonStandardCalculate.UseVisualStyleBackColor = true;
-            // 
-            // textBoxStandard
-            // 
-            this.textBoxStandard.Location = new System.Drawing.Point(39, 46);
-            this.textBoxStandard.Name = "textBoxStandard";
-            this.textBoxStandard.Size = new System.Drawing.Size(517, 22);
-            this.textBoxStandard.TabIndex = 2;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -231,10 +232,10 @@
             this.Text = "Form1";
             this.groupBoxEarth.ResumeLayout(false);
             this.groupBoxEarth.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthDay)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthHour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthMinute)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthSecond)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthMinute)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthHour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthDay)).EndInit();
             this.groupBoxStandard.ResumeLayout(false);
             this.groupBoxStandard.PerformLayout();
             this.groupBoxGalactic.ResumeLayout(false);
