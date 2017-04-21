@@ -174,7 +174,7 @@ namespace RynnDateConverter
                 int extraDays = daysOffset % RYNN_DAYS_PER_YEAR;
                 extraDays += GetRynnTotalDaysForMonthDays(new RynnMonthDays(CommonPointRynn.Month, CommonPointRynn.Day), false);
 
-                //handle leap years
+                //handle leap years (broken)
                 extraDays -= years / RYNN_LEAP_INTERVAL;
 
                 //don't go negative!
@@ -213,15 +213,17 @@ namespace RynnDateConverter
                 years += 1; //a hack because eras overlap
                 int extraDays = daysInEra % RYNN_DAYS_PER_YEAR;
 
-                //handle leap years
+                //handle leap years (broken)
                 extraDays -= years / RYNN_LEAP_INTERVAL;
 
                 //don't go negative!
                 if (extraDays < 0)
                 {
                     years -= 1;
-                    extraDays = RYNN_DAYS_PER_YEAR + extraDays;
+                    extraDays = RYNN_DAYS_PER_YEAR + extraDays + 1; //on the right track but only add on a leap year?
                 }
+
+                Console.WriteLine(extraDays);
 
                 //if the year is still 1, then we're on an era boundary!
                 if (years == 1)
