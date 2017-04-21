@@ -65,9 +65,12 @@ namespace RynnDateConverter
 
     public sealed class MultiformatDate //fuck you if you want to extend it
     {
-        const int RYNN_DAYS_PER_YEAR = 350;
-        const int RYNN_LEAP_INTERVAL = 3;
-        const int RYNN_LEAP_MONTH = 3;
+        private const int RYNN_DAYS_PER_YEAR = 350;
+        private const int RYNN_LEAP_INTERVAL = 3;
+        private const int RYNN_LEAP_MONTH = 3;
+        private const int RYNN_ERA_5_DAYS_OS = 182243; //5CE001->5CE521, plus (521/3)=173 days from leap years, plus (26+28+16)=70 days (goes to offset point)
+        private const int RYNN_ERA_4_DAYS = 303739; //4CE001->4CE868=867 years=303450 days, plus (868/3)=289 days from leap years (goes to end of 4CE867)
+        private const int RYNN_ERA_3_DAYS = 330364; //3CE001->3CE944=943 years=330050 days, plus (944/3)=314 days from leap years (goes to end of 3CE943)
         private readonly int[] RYNN_MONTH_DAYS = {0, 26, 28, 27, 27, 27, 26, 26, 27, 27, 28, 27, 27, 27 };        
 
         private struct RynnMonthDays
@@ -163,7 +166,7 @@ namespace RynnDateConverter
             Console.WriteLine(daysOffset);
 
             //if it's positive, it must be 6CE which is fairly easy to deal with
-            if(daysOffset >= 0)
+            if (daysOffset >= 0)
             {
                 rfd.Era = 6;
                 int years = daysOffset / RYNN_DAYS_PER_YEAR;
@@ -175,14 +178,14 @@ namespace RynnDateConverter
                 extraDays -= years / RYNN_LEAP_INTERVAL;
 
                 //don't go negative!
-                if(extraDays < 0)
+                if (extraDays < 0)
                 {
                     years -= 1;
                     extraDays = RYNN_DAYS_PER_YEAR + extraDays;
                 }
 
                 //if the year is still 1, then we're on an era boundary!
-                if(years == 1)
+                if (years == 1)
                 {
                     rfd.OnEraBoundary = true;
                 }
@@ -193,6 +196,58 @@ namespace RynnDateConverter
                 rfd.Year = years;
                 rfd.Month = rmd.Month;
                 rfd.Day = rmd.Days;
+            }
+            else if (daysOffset >= -RYNN_ERA_5_DAYS_OS)
+            {
+                rfd.Era = 5;
+
+                //note that daysOffset is days before the offset point
+
+                //get number of days after beginning of 5CE
+                int daysInEra = RYNN_ERA_5_DAYS_OS + daysOffset; //because it's negative
+
+                Console.WriteLine(daysInEra);
+
+                //calculate similar to 6CE
+                int years = daysInEra / RYNN_DAYS_PER_YEAR;
+                years += 1; //a hack because eras overlap
+                int extraDays = daysInEra % RYNN_DAYS_PER_YEAR;
+
+                //handle leap years
+                extraDays -= years / RYNN_LEAP_INTERVAL;
+
+                //don't go negative!
+                if (extraDays < 0)
+                {
+                    years -= 1;
+                    extraDays = RYNN_DAYS_PER_YEAR + extraDays;
+                }
+
+                //if the year is still 1, then we're on an era boundary!
+                if (years == 1)
+                {
+                    rfd.OnEraBoundary = true;
+                }
+
+                //calculate actual month and days
+                RynnMonthDays rmd = GetRynnMonthForDays(extraDays, (years % RYNN_LEAP_INTERVAL == 0));
+
+                rfd.Year = years;
+                rfd.Month = rmd.Month;
+                rfd.Day = rmd.Days;
+
+            }
+            else if (daysOffset >= -(RYNN_ERA_5_DAYS_OS + RYNN_ERA_4_DAYS))
+            {
+                rfd.Era = 4;
+            }
+            else if (daysOffset >= -(RYNN_ERA_5_DAYS_OS + RYNN_ERA_4_DAYS + RYNN_ERA_3_DAYS))
+            {
+                rfd.Era = 3;
+            }
+            else
+            {
+                rfd.Era = 2; //ehehehee
             }
 
             return rfd;
@@ -210,10 +265,12 @@ namespace RynnDateConverter
             }
             
             int totalDays = rynnMonthDays.Days;
-            for (int month = 1; month <= rynnMonthDays.Month; month++)
+            for (int month = 1; month < rynnMonthDays.Month; month++)
             {
                 totalDays += monthDayArray[month];
             }
+
+            Console.WriteLine(totalDays);
 
             return totalDays;
         }
