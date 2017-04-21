@@ -206,7 +206,7 @@ namespace RynnDateConverter
                 //get number of days after beginning of 5CE
                 int daysInEra = RYNN_ERA_5_DAYS_OS + daysOffset; //because it's negative
 
-                Console.WriteLine(daysInEra);
+                //Console.WriteLine(daysInEra);
 
                 //calculate similar to 6CE
                 int years = daysInEra / RYNN_DAYS_PER_YEAR;
@@ -240,10 +240,70 @@ namespace RynnDateConverter
             else if (daysOffset >= -(RYNN_ERA_5_DAYS_OS + RYNN_ERA_4_DAYS))
             {
                 rfd.Era = 4;
+
+                int daysInEra = (RYNN_ERA_5_DAYS_OS + RYNN_ERA_4_DAYS) + daysOffset; //because it's negative
+
+                //literally copypasted from 5CE
+                int years = daysInEra / RYNN_DAYS_PER_YEAR;
+                years += 1; //a hack because eras overlap
+                int extraDays = daysInEra % RYNN_DAYS_PER_YEAR;
+
+                //handle leap years
+                extraDays -= years / RYNN_LEAP_INTERVAL;
+
+                //don't go negative!
+                if (extraDays < 0)
+                {
+                    years -= 1;
+                    extraDays = RYNN_DAYS_PER_YEAR + extraDays;
+                }
+
+                //if the year is still 1, then we're on an era boundary!
+                if (years == 1)
+                {
+                    rfd.OnEraBoundary = true;
+                }
+
+                //calculate actual month and days
+                RynnMonthDays rmd = GetRynnMonthForDays(extraDays, (years % RYNN_LEAP_INTERVAL == 0));
+
+                rfd.Year = years;
+                rfd.Month = rmd.Month;
+                rfd.Day = rmd.Days;
             }
             else if (daysOffset >= -(RYNN_ERA_5_DAYS_OS + RYNN_ERA_4_DAYS + RYNN_ERA_3_DAYS))
             {
                 rfd.Era = 3;
+
+                int daysInEra = (RYNN_ERA_5_DAYS_OS + RYNN_ERA_4_DAYS + RYNN_ERA_3_DAYS) + daysOffset; //because it's negative
+
+                //literally copypasted from 5CE
+                int years = daysInEra / RYNN_DAYS_PER_YEAR;
+                years += 1; //a hack because eras overlap
+                int extraDays = daysInEra % RYNN_DAYS_PER_YEAR;
+
+                //handle leap years
+                extraDays -= years / RYNN_LEAP_INTERVAL;
+
+                //don't go negative!
+                if (extraDays < 0)
+                {
+                    years -= 1;
+                    extraDays = RYNN_DAYS_PER_YEAR + extraDays;
+                }
+
+                //if the year is still 1, then we're on an era boundary!
+                if (years == 1)
+                {
+                    rfd.OnEraBoundary = true;
+                }
+
+                //calculate actual month and days
+                RynnMonthDays rmd = GetRynnMonthForDays(extraDays, (years % RYNN_LEAP_INTERVAL == 0));
+
+                rfd.Year = years;
+                rfd.Month = rmd.Month;
+                rfd.Day = rmd.Days;
             }
             else
             {
@@ -292,7 +352,7 @@ namespace RynnDateConverter
             for(int month = 1; month < monthDayArray.Length; month++)
             {
                 //if days is <= the number of days in the month, it's the correct month
-                if(days <= monthDayArray[month])
+                if(days < monthDayArray[month])
                 {
                     rmd.Month = month;
                     break;
@@ -304,7 +364,7 @@ namespace RynnDateConverter
                 }
             }
 
-            rmd.Days = days;
+            rmd.Days = ++days;
 
             return rmd;            
         }

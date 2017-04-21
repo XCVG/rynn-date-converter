@@ -69,6 +69,10 @@ namespace RynnDateConverter
             {
                 labelRynnEra.Text = "On Era Boundary";
             }
+            else if(rfd.Era < 3)
+            {
+                labelRynnEra.Text = "Before recorded history";
+            }
             else
             {
                 labelRynnEra.Text = "";
