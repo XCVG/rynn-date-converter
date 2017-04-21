@@ -337,6 +337,9 @@ namespace RynnDateConverter
 
         private RynnMonthDays GetRynnMonthForDays(int days, bool isLeapYear)
         {
+            //because a year starts on the 1st, not the 0th
+            days += 1;
+
             int[] monthDayArray = new int[RYNN_MONTH_DAYS.Length];
             Array.Copy(RYNN_MONTH_DAYS, monthDayArray, RYNN_MONTH_DAYS.Length);
 
