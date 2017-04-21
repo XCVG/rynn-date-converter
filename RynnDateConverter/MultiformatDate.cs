@@ -68,7 +68,7 @@ namespace RynnDateConverter
         private const int RYNN_DAYS_PER_YEAR = 350;
         private const int RYNN_LEAP_INTERVAL = 3;
         private const int RYNN_LEAP_MONTH = 3;
-        private const int RYNN_ERA_5_DAYS_OS = 182243; //5CE001->5CE521, plus (521/3)=173 days from leap years, plus (26+28+16)=70 days (goes to offset point)
+        private const int RYNN_ERA_5_DAYS_OS = 182242; //5CE001->5CE521, plus (521/3)=173 days from leap years, plus (26+28+16)=70 days, minus 1 (goes to offset point)
         private const int RYNN_ERA_4_DAYS = 303739; //4CE001->4CE868=867 years=303450 days, plus (868/3)=289 days from leap years (goes to end of 4CE867)
         private const int RYNN_ERA_3_DAYS = 330364; //3CE001->3CE944=943 years=330050 days, plus (944/3)=314 days from leap years (goes to end of 3CE943)
         private readonly int[] RYNN_MONTH_DAYS = {0, 26, 28, 27, 27, 27, 26, 26, 27, 27, 28, 27, 27, 27 };        
@@ -182,6 +182,8 @@ namespace RynnDateConverter
                 {
                     years -= 1;
                     extraDays = RYNN_DAYS_PER_YEAR + extraDays;
+                    if (years % RYNN_LEAP_INTERVAL == 0)
+                        extraDays++;
                 }
 
                 //if the year is still 1, then we're on an era boundary!
@@ -220,7 +222,9 @@ namespace RynnDateConverter
                 if (extraDays < 0)
                 {
                     years -= 1;
-                    extraDays = RYNN_DAYS_PER_YEAR + extraDays + 1; //on the right track but only add on a leap year?
+                    extraDays = RYNN_DAYS_PER_YEAR + extraDays;
+                    if (years % RYNN_LEAP_INTERVAL == 0)
+                        extraDays++;
                 }
 
                 Console.WriteLine(extraDays);
@@ -258,6 +262,8 @@ namespace RynnDateConverter
                 {
                     years -= 1;
                     extraDays = RYNN_DAYS_PER_YEAR + extraDays;
+                    if (years % RYNN_LEAP_INTERVAL == 0)
+                        extraDays++;
                 }
 
                 //if the year is still 1, then we're on an era boundary!
@@ -292,6 +298,8 @@ namespace RynnDateConverter
                 {
                     years -= 1;
                     extraDays = RYNN_DAYS_PER_YEAR + extraDays;
+                    if (years % RYNN_LEAP_INTERVAL == 0)
+                        extraDays++;
                 }
 
                 //if the year is still 1, then we're on an era boundary!
