@@ -349,10 +349,11 @@ namespace RynnDateConverter
             RynnMonthDays rmd = new RynnMonthDays();
 
             //a stupid way of doing it
+            //it's broken and I don't know why
             for(int month = 1; month < monthDayArray.Length; month++)
             {
                 //if days is <= the number of days in the month, it's the correct month
-                if(days < monthDayArray[month])
+                if(days <= monthDayArray[month])
                 {
                     rmd.Month = month;
                     break;
@@ -364,7 +365,7 @@ namespace RynnDateConverter
                 }
             }
 
-            rmd.Days = ++days;
+            rmd.Days = days;
 
             return rmd;            
         }
