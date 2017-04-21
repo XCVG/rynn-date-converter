@@ -28,9 +28,33 @@ namespace RynnDateConverter
             UpdateStandardDisplay();
         }
 
+        private void buttonEarthCalculate_Click(object sender, EventArgs e)
+        {
+            EarthFormatDate efd = new EarthFormatDate();
+            efd.Year = Convert.ToInt32(textBoxEarthYear.Text);
+            efd.Month = comboBoxEarthMonth.SelectedIndex + 1;
+            efd.Day = (int)numericUpDownEarthDay.Value; //very safe!
+            efd.Hour = (int)numericUpDownEarthHour.Value;
+            efd.Minute = (int)numericUpDownEarthMinute.Value;
+            efd.Second = (int)numericUpDownEarthSecond.Value;
+            MyDate = new MultiformatDate(efd);
+
+            UpdateRynnDisplay();
+            UpdateGalacticDisplay();
+            UpdateStandardDisplay();
+        }
+
+        //why protected? I have no idea!
+
         protected void UpdateEarthDisplay()
         {
-
+            EarthFormatDate efd = MyDate.EarthDate;
+            textBoxEarthYear.Text = efd.Year.ToString();
+            comboBoxEarthMonth.SelectedIndex = efd.Month-1;
+            numericUpDownEarthDay.Value = efd.Day;
+            numericUpDownEarthHour.Value = efd.Hour;
+            numericUpDownEarthMinute.Value = efd.Minute;
+            numericUpDownEarthSecond.Value = efd.Second;
         }
 
         protected void UpdateRynnDisplay()
@@ -40,12 +64,14 @@ namespace RynnDateConverter
 
         protected void UpdateStandardDisplay()
         {
-
+            textBoxStandard.Text = MyDate.Timestamp.ToString();
         }
 
         protected void UpdateGalacticDisplay()
         {
 
         }
+
+        
     }
 }

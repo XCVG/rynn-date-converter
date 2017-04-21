@@ -83,6 +83,7 @@
             this.buttonEarthCalculate.TabIndex = 10;
             this.buttonEarthCalculate.Text = "Calculate";
             this.buttonEarthCalculate.UseVisualStyleBackColor = true;
+            this.buttonEarthCalculate.Click += new System.EventHandler(this.buttonEarthCalculate_Click);
             // 
             // numericUpDownEarthSecond
             // 
@@ -126,6 +127,11 @@
             // numericUpDownEarthDay
             // 
             this.numericUpDownEarthDay.Location = new System.Drawing.Point(436, 49);
+            this.numericUpDownEarthDay.Maximum = new decimal(new int[] {
+            31,
+            0,
+            0,
+            0});
             this.numericUpDownEarthDay.Name = "numericUpDownEarthDay";
             this.numericUpDownEarthDay.Size = new System.Drawing.Size(120, 22);
             this.numericUpDownEarthDay.TabIndex = 4;
@@ -158,6 +164,19 @@
             // comboBoxEarthMonth
             // 
             this.comboBoxEarthMonth.FormattingEnabled = true;
+            this.comboBoxEarthMonth.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
             this.comboBoxEarthMonth.Location = new System.Drawing.Point(189, 50);
             this.comboBoxEarthMonth.Name = "comboBoxEarthMonth";
             this.comboBoxEarthMonth.Size = new System.Drawing.Size(195, 24);

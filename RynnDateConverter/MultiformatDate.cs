@@ -66,7 +66,15 @@ namespace RynnDateConverter
         {
             get
             {
-                throw new NotImplementedException();
+                //structs are teh werid
+                EarthFormatDate efd;
+                efd.Year = InternalDate.Year;
+                efd.Month = InternalDate.Month;
+                efd.Day = InternalDate.Day;
+                efd.Hour = InternalDate.Hour;
+                efd.Minute = InternalDate.Minute;
+                efd.Second = InternalDate.Second;
+                return efd;
             }
         }
 
