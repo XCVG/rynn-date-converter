@@ -171,14 +171,40 @@ namespace RynnDateConverter
 
                 deltaDays = daysFromYear + daysFromDate - offsetDays;
             }
+            else if(rfd.Era == 5)
+            {
+                //5CE means we go the other way but offset in a similar way
+                int daysFromYear = GetRynnDaysForYearInterval(CommonPointRynn.Year, rfd.Year);
+                int daysFromDate = GetRynnTotalDaysForMonthDays(new RynnMonthDays(rfd.Month, rfd.Day), (rfd.Year % RYNN_LEAP_INTERVAL == 0));
+
+                int offsetDays = GetRynnTotalDaysForMonthDays(new RynnMonthDays(CommonPointRynn.Month, CommonPointRynn.Day), false);
+
+                deltaDays = daysFromYear + daysFromDate - offsetDays;
+            }
             else if(rfd.Era >= 3) 
             {
+                //3CE or 4CE we use known day offsets and move from the beginning of the era
+                //probably more error prone and broken
 
+                int baseDayOffset = RYNN_ERA_5_DAYS_OS;
+
+                if (rfd.Era == 4)
+                    baseDayOffset += RYNN_ERA_4_DAYS;
+
+                if (rfd.Era == 3)
+                    baseDayOffset += (RYNN_ERA_4_DAYS + RYNN_ERA_3_DAYS);
+
+                baseDayOffset -= 1; //I don't know why I need this but I have an OBO/rounding error somewhere
+
+                int daysFromYear = GetRynnDaysForYearInterval(1, rfd.Year);
+                int daysFromDate = GetRynnTotalDaysForMonthDays(new RynnMonthDays(rfd.Month, rfd.Day), (rfd.Year % RYNN_LEAP_INTERVAL == 0));
+
+                deltaDays = (-baseDayOffset) + (daysFromYear + daysFromDate);
             }
             else
             {
                 //unsolvable date
-                return new DateTime(0); //shitty sentinel
+                throw new ArgumentOutOfRangeException();
             }
 
 
