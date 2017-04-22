@@ -21,41 +21,62 @@ namespace RynnDateConverter
 
         private void buttonStandardCalculate_Click(object sender, EventArgs e)
         {
-            MyDate = new MultiformatDate(Convert.ToInt64(textBoxStandard.Text));
-            UpdateEarthDisplay();
-            UpdateRynnDisplay();
-            UpdateGalacticDisplay();
-            UpdateStandardDisplay();
+            try
+            {
+                MyDate = new MultiformatDate(Convert.ToInt64(textBoxStandard.Text));
+                UpdateEarthDisplay();
+                UpdateRynnDisplay();
+                UpdateGalacticDisplay();
+                UpdateStandardDisplay();
+            }
+            catch(Exception ex)
+            {
+                textBoxMessage.Text = ex.ToString();
+            }
         }
 
         private void buttonEarthCalculate_Click(object sender, EventArgs e)
         {
-            EarthFormatDate efd = new EarthFormatDate();
-            efd.Year = Convert.ToInt32(textBoxEarthYear.Text);
-            efd.Month = comboBoxEarthMonth.SelectedIndex + 1;
-            efd.Day = (int)numericUpDownEarthDay.Value; //very safe!
-            efd.Hour = (int)numericUpDownEarthHour.Value;
-            efd.Minute = (int)numericUpDownEarthMinute.Value;
-            efd.Second = (int)numericUpDownEarthSecond.Value;
-            MyDate = new MultiformatDate(efd);
+            try
+            {
+                EarthFormatDate efd = new EarthFormatDate();
+                efd.Year = Convert.ToInt32(textBoxEarthYear.Text);
+                efd.Month = comboBoxEarthMonth.SelectedIndex + 1;
+                efd.Day = (int)numericUpDownEarthDay.Value; //very safe!
+                efd.Hour = (int)numericUpDownEarthHour.Value;
+                efd.Minute = (int)numericUpDownEarthMinute.Value;
+                efd.Second = (int)numericUpDownEarthSecond.Value;
+                MyDate = new MultiformatDate(efd);
 
-            UpdateRynnDisplay();
-            UpdateGalacticDisplay();
-            UpdateStandardDisplay();
+                UpdateRynnDisplay();
+                UpdateGalacticDisplay();
+                UpdateStandardDisplay();
+            }
+            catch (Exception ex)
+            {
+                textBoxMessage.Text = ex.ToString();
+            }
         }
 
         private void buttonRynnCalculate_Click(object sender, EventArgs e)
         {
-            RynnFormatDate rfd = new RynnFormatDate();
-            rfd.Era = comboBoxRynnEra.SelectedIndex + 1;
-            rfd.Year = Convert.ToInt32(textBoxRynnYear.Text);
-            rfd.Month = comboBoxRynnMonth.SelectedIndex + 1;
-            rfd.Day = (int)numericUpDownRynnDay.Value;
-            MyDate = new MultiformatDate(rfd);
+            try
+            {
+                RynnFormatDate rfd = new RynnFormatDate();
+                rfd.Era = comboBoxRynnEra.SelectedIndex + 1;
+                rfd.Year = Convert.ToInt32(textBoxRynnYear.Text);
+                rfd.Month = comboBoxRynnMonth.SelectedIndex + 1;
+                rfd.Day = (int)numericUpDownRynnDay.Value;
+                MyDate = new MultiformatDate(rfd);
 
-            UpdateEarthDisplay();
-            UpdateGalacticDisplay();
-            UpdateStandardDisplay();
+                UpdateEarthDisplay();
+                UpdateGalacticDisplay();
+                UpdateStandardDisplay();
+            }
+            catch (Exception ex)
+            {
+                textBoxMessage.Text = ex.ToString();
+            }
         }
 
         //why protected? I have no idea!
@@ -103,6 +124,9 @@ namespace RynnDateConverter
 
         }
 
-        
+        private void buttonMessageClear_Click(object sender, EventArgs e)
+        {
+            textBoxMessage.Clear();
+        }
     }
 }

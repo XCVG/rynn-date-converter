@@ -56,6 +56,8 @@
             this.buttonStandardCalculate = new System.Windows.Forms.Button();
             this.groupBoxGalactic = new System.Windows.Forms.GroupBox();
             this.buttonGalacticCalculate = new System.Windows.Forms.Button();
+            this.textBoxMessage = new System.Windows.Forms.TextBox();
+            this.buttonMessageClear = new System.Windows.Forms.Button();
             this.groupBoxEarth.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthSecond)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthMinute)).BeginInit();
@@ -154,6 +156,11 @@
             this.numericUpDownEarthDay.Name = "numericUpDownEarthDay";
             this.numericUpDownEarthDay.Size = new System.Drawing.Size(135, 26);
             this.numericUpDownEarthDay.TabIndex = 4;
+            this.numericUpDownEarthDay.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label2
             // 
@@ -290,6 +297,11 @@
             this.numericUpDownRynnDay.Name = "numericUpDownRynnDay";
             this.numericUpDownRynnDay.Size = new System.Drawing.Size(135, 26);
             this.numericUpDownRynnDay.TabIndex = 11;
+            this.numericUpDownRynnDay.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label5
             // 
@@ -394,18 +406,44 @@
             this.buttonGalacticCalculate.Text = "Calculate";
             this.buttonGalacticCalculate.UseVisualStyleBackColor = true;
             // 
+            // textBoxMessage
+            // 
+            this.textBoxMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxMessage.Location = new System.Drawing.Point(15, 751);
+            this.textBoxMessage.Multiline = true;
+            this.textBoxMessage.Name = "textBoxMessage";
+            this.textBoxMessage.ReadOnly = true;
+            this.textBoxMessage.Size = new System.Drawing.Size(953, 67);
+            this.textBoxMessage.TabIndex = 4;
+            // 
+            // buttonMessageClear
+            // 
+            this.buttonMessageClear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMessageClear.Location = new System.Drawing.Point(974, 751);
+            this.buttonMessageClear.Name = "buttonMessageClear";
+            this.buttonMessageClear.Size = new System.Drawing.Size(69, 67);
+            this.buttonMessageClear.TabIndex = 5;
+            this.buttonMessageClear.Text = "CLR";
+            this.buttonMessageClear.UseVisualStyleBackColor = true;
+            this.buttonMessageClear.Click += new System.EventHandler(this.buttonMessageClear_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1055, 830);
+            this.Controls.Add(this.buttonMessageClear);
+            this.Controls.Add(this.textBoxMessage);
             this.Controls.Add(this.groupBoxGalactic);
             this.Controls.Add(this.groupBoxStandard);
             this.Controls.Add(this.groupBoxRynn);
             this.Controls.Add(this.groupBoxEarth);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Rynn Date Converter";
             this.groupBoxEarth.ResumeLayout(false);
             this.groupBoxEarth.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthSecond)).EndInit();
@@ -419,6 +457,7 @@
             this.groupBoxStandard.PerformLayout();
             this.groupBoxGalactic.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -452,6 +491,8 @@
         private System.Windows.Forms.TextBox textBoxRynnYear;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labelRynnEra;
+        private System.Windows.Forms.TextBox textBoxMessage;
+        private System.Windows.Forms.Button buttonMessageClear;
     }
 }
 

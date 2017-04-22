@@ -158,6 +158,9 @@ namespace RynnDateConverter
         //actual Rynn conversion
         private DateTime GetDateForRynnDate(RynnFormatDate rfd)
         {
+            if (!ValidateRynnDate(rfd))
+                throw new ArgumentOutOfRangeException("rfd", rfd, "unacceptable date");
+
             int deltaDays = 0;
 
             //convert Rynn date by era
@@ -204,7 +207,7 @@ namespace RynnDateConverter
             else
             {
                 //unsolvable date
-                throw new ArgumentOutOfRangeException();
+                throw new ArgumentOutOfRangeException("rfd.Era", "unsolvable era");
             }
 
 
@@ -459,6 +462,32 @@ namespace RynnDateConverter
             rmd.Days = days;
 
             return rmd;            
+        }
+
+        private bool ValidateRynnDate(RynnFormatDate rfd)
+        {
+            if (rfd.Era < 1 || rfd.Era > 6)
+                return false;
+
+            if (rfd.Year <= 0) //yes, it can be too high, but something else will break if that's the case
+                return false;
+
+            if (rfd.Month < 1 || rfd.Month >= RYNN_MONTH_DAYS.Length)
+                return false;
+
+            if (rfd.Day < 1 || rfd.Day > RYNN_MONTH_DAYS[rfd.Month])
+                return false;
+
+            if (rfd.Hour < 0 || rfd.Hour >= 24)
+                return false;
+
+            if (rfd.Minute < 0 || rfd.Minute >= 60)
+                return false;
+
+            if (rfd.Second < 0 || rfd.Second >= 60)
+                return false;
+
+            return true;
         }
 
     }
