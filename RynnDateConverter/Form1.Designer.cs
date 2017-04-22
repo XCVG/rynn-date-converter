@@ -41,30 +41,30 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxEarthMonth = new System.Windows.Forms.ComboBox();
             this.groupBoxRynn = new System.Windows.Forms.GroupBox();
+            this.labelRynnEra = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBoxRynnEra = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.buttonRynnCalculate = new System.Windows.Forms.Button();
+            this.numericUpDownRynnDay = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxRynnMonth = new System.Windows.Forms.ComboBox();
+            this.textBoxRynnYear = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBoxStandard = new System.Windows.Forms.GroupBox();
             this.textBoxStandard = new System.Windows.Forms.TextBox();
             this.buttonStandardCalculate = new System.Windows.Forms.Button();
             this.groupBoxGalactic = new System.Windows.Forms.GroupBox();
             this.buttonGalacticCalculate = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBoxRynnYear = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.comboBoxRynnMonth = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDownRynnDay = new System.Windows.Forms.NumericUpDown();
-            this.comboBoxRynnEra = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.labelRynnEra = new System.Windows.Forms.Label();
             this.groupBoxEarth.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthSecond)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthMinute)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthHour)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthDay)).BeginInit();
             this.groupBoxRynn.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRynnDay)).BeginInit();
             this.groupBoxStandard.SuspendLayout();
             this.groupBoxGalactic.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRynnDay)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxEarth
@@ -209,7 +209,7 @@
             this.groupBoxRynn.Controls.Add(this.label8);
             this.groupBoxRynn.Controls.Add(this.comboBoxRynnEra);
             this.groupBoxRynn.Controls.Add(this.label7);
-            this.groupBoxRynn.Controls.Add(this.button1);
+            this.groupBoxRynn.Controls.Add(this.buttonRynnCalculate);
             this.groupBoxRynn.Controls.Add(this.numericUpDownRynnDay);
             this.groupBoxRynn.Controls.Add(this.label5);
             this.groupBoxRynn.Controls.Add(this.comboBoxRynnMonth);
@@ -223,6 +223,122 @@
             this.groupBoxRynn.TabIndex = 1;
             this.groupBoxRynn.TabStop = false;
             this.groupBoxRynn.Text = "Rynn Dates";
+            // 
+            // labelRynnEra
+            // 
+            this.labelRynnEra.AutoSize = true;
+            this.labelRynnEra.ForeColor = System.Drawing.Color.Lime;
+            this.labelRynnEra.Location = new System.Drawing.Point(172, 81);
+            this.labelRynnEra.Name = "labelRynnEra";
+            this.labelRynnEra.Size = new System.Drawing.Size(36, 20);
+            this.labelRynnEra.TabIndex = 18;
+            this.labelRynnEra.Text = "???";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(44, 48);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 20);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Era";
+            // 
+            // comboBoxRynnEra
+            // 
+            this.comboBoxRynnEra.FormattingEnabled = true;
+            this.comboBoxRynnEra.Items.AddRange(new object[] {
+            "1CE",
+            "2CE",
+            "3CE",
+            "4CE",
+            "5CE",
+            "6CE"});
+            this.comboBoxRynnEra.Location = new System.Drawing.Point(44, 74);
+            this.comboBoxRynnEra.Name = "comboBoxRynnEra";
+            this.comboBoxRynnEra.Size = new System.Drawing.Size(121, 28);
+            this.comboBoxRynnEra.TabIndex = 16;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(490, 137);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 20);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Day";
+            // 
+            // buttonRynnCalculate
+            // 
+            this.buttonRynnCalculate.Location = new System.Drawing.Point(796, 217);
+            this.buttonRynnCalculate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonRynnCalculate.Name = "buttonRynnCalculate";
+            this.buttonRynnCalculate.Size = new System.Drawing.Size(225, 50);
+            this.buttonRynnCalculate.TabIndex = 15;
+            this.buttonRynnCalculate.Text = "Calculate";
+            this.buttonRynnCalculate.UseVisualStyleBackColor = true;
+            this.buttonRynnCalculate.Click += new System.EventHandler(this.buttonRynnCalculate_Click);
+            // 
+            // numericUpDownRynnDay
+            // 
+            this.numericUpDownRynnDay.Location = new System.Drawing.Point(490, 162);
+            this.numericUpDownRynnDay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numericUpDownRynnDay.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.numericUpDownRynnDay.Name = "numericUpDownRynnDay";
+            this.numericUpDownRynnDay.Size = new System.Drawing.Size(135, 26);
+            this.numericUpDownRynnDay.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(210, 137);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 20);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Month";
+            // 
+            // comboBoxRynnMonth
+            // 
+            this.comboBoxRynnMonth.FormattingEnabled = true;
+            this.comboBoxRynnMonth.Items.AddRange(new object[] {
+            "Ianuarius",
+            "Februarius",
+            "Mercedonius",
+            "Martius",
+            "Aprilis",
+            "Maius",
+            "Iunius",
+            "Quintillis",
+            "Sextilis",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.comboBoxRynnMonth.Location = new System.Drawing.Point(214, 161);
+            this.comboBoxRynnMonth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBoxRynnMonth.Name = "comboBoxRynnMonth";
+            this.comboBoxRynnMonth.Size = new System.Drawing.Size(219, 28);
+            this.comboBoxRynnMonth.TabIndex = 11;
+            // 
+            // textBoxRynnYear
+            // 
+            this.textBoxRynnYear.Location = new System.Drawing.Point(45, 161);
+            this.textBoxRynnYear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBoxRynnYear.Name = "textBoxRynnYear";
+            this.textBoxRynnYear.Size = new System.Drawing.Size(112, 26);
+            this.textBoxRynnYear.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(41, 137);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 20);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Year";
             // 
             // groupBoxStandard
             // 
@@ -278,121 +394,6 @@
             this.buttonGalacticCalculate.Text = "Calculate";
             this.buttonGalacticCalculate.UseVisualStyleBackColor = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(796, 217);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(225, 50);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Calculate";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(210, 137);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 20);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Month";
-            // 
-            // textBoxRynnYear
-            // 
-            this.textBoxRynnYear.Location = new System.Drawing.Point(45, 161);
-            this.textBoxRynnYear.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBoxRynnYear.Name = "textBoxRynnYear";
-            this.textBoxRynnYear.Size = new System.Drawing.Size(112, 26);
-            this.textBoxRynnYear.TabIndex = 13;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 137);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 20);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Year";
-            // 
-            // comboBoxRynnMonth
-            // 
-            this.comboBoxRynnMonth.FormattingEnabled = true;
-            this.comboBoxRynnMonth.Items.AddRange(new object[] {
-            "Ianuarius",
-            "Februarius",
-            "Mercedonius",
-            "Martius",
-            "Aprilis",
-            "Maius",
-            "Iunius",
-            "Quintillis",
-            "Sextilis",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.comboBoxRynnMonth.Location = new System.Drawing.Point(214, 161);
-            this.comboBoxRynnMonth.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBoxRynnMonth.Name = "comboBoxRynnMonth";
-            this.comboBoxRynnMonth.Size = new System.Drawing.Size(219, 28);
-            this.comboBoxRynnMonth.TabIndex = 11;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(490, 137);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 20);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Day";
-            // 
-            // numericUpDownRynnDay
-            // 
-            this.numericUpDownRynnDay.Location = new System.Drawing.Point(490, 162);
-            this.numericUpDownRynnDay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.numericUpDownRynnDay.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.numericUpDownRynnDay.Name = "numericUpDownRynnDay";
-            this.numericUpDownRynnDay.Size = new System.Drawing.Size(135, 26);
-            this.numericUpDownRynnDay.TabIndex = 11;
-            // 
-            // comboBoxRynnEra
-            // 
-            this.comboBoxRynnEra.FormattingEnabled = true;
-            this.comboBoxRynnEra.Items.AddRange(new object[] {
-            "1CE",
-            "2CE",
-            "3CE",
-            "4CE",
-            "5CE",
-            "6CE"});
-            this.comboBoxRynnEra.Location = new System.Drawing.Point(44, 74);
-            this.comboBoxRynnEra.Name = "comboBoxRynnEra";
-            this.comboBoxRynnEra.Size = new System.Drawing.Size(121, 28);
-            this.comboBoxRynnEra.TabIndex = 16;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(44, 48);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 20);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Era";
-            // 
-            // labelRynnEra
-            // 
-            this.labelRynnEra.AutoSize = true;
-            this.labelRynnEra.ForeColor = System.Drawing.Color.Lime;
-            this.labelRynnEra.Location = new System.Drawing.Point(172, 81);
-            this.labelRynnEra.Name = "labelRynnEra";
-            this.labelRynnEra.Size = new System.Drawing.Size(36, 20);
-            this.labelRynnEra.TabIndex = 18;
-            this.labelRynnEra.Text = "???";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -413,10 +414,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEarthDay)).EndInit();
             this.groupBoxRynn.ResumeLayout(false);
             this.groupBoxRynn.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRynnDay)).EndInit();
             this.groupBoxStandard.ResumeLayout(false);
             this.groupBoxStandard.PerformLayout();
             this.groupBoxGalactic.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownRynnDay)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -444,7 +445,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBoxRynnEra;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonRynnCalculate;
         private System.Windows.Forms.NumericUpDown numericUpDownRynnDay;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxRynnMonth;

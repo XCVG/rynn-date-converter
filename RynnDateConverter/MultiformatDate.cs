@@ -185,7 +185,7 @@ namespace RynnDateConverter
             //run a calculation
             TimeSpan offset = new TimeSpan(deltaDays, 0, 0, 0);
 
-            DateTime dt = CommonPoint - offset;
+            DateTime dt = CommonPoint + offset;
 
             return dt;
         }

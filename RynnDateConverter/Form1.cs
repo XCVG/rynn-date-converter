@@ -44,6 +44,20 @@ namespace RynnDateConverter
             UpdateStandardDisplay();
         }
 
+        private void buttonRynnCalculate_Click(object sender, EventArgs e)
+        {
+            RynnFormatDate rfd = new RynnFormatDate();
+            rfd.Era = comboBoxRynnEra.SelectedIndex + 1;
+            rfd.Year = Convert.ToInt32(textBoxRynnYear.Text);
+            rfd.Month = comboBoxRynnMonth.SelectedIndex + 1;
+            rfd.Day = (int)numericUpDownRynnDay.Value;
+            MyDate = new MultiformatDate(rfd);
+
+            UpdateEarthDisplay();
+            UpdateGalacticDisplay();
+            UpdateStandardDisplay();
+        }
+
         //why protected? I have no idea!
 
         protected void UpdateEarthDisplay()
