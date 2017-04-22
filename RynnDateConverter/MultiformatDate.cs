@@ -130,8 +130,8 @@ namespace RynnDateConverter
 
         public MultiformatDate(RynnFormatDate fromDate)
         {
-            //this is gonna suck
-            throw new NotImplementedException();
+            InternalDate = GetDateForRynnDate(fromDate);
+            Console.WriteLine(InternalDate.ToString());
         }
 
         public MultiformatDate(long fromTimestamp)
@@ -156,6 +156,57 @@ namespace RynnDateConverter
         }
 
         //actual Rynn conversion
+        private DateTime GetDateForRynnDate(RynnFormatDate rfd)
+        {
+            int deltaDays = 0;
+
+            //convert Rynn date by era
+            if(rfd.Era == 6)
+            {
+                //6CE means we can calculate days, then offset
+                int daysFromYear = GetRynnDaysForYearInterval(1, rfd.Year);
+                int daysFromDate = GetRynnTotalDaysForMonthDays(new RynnMonthDays(rfd.Month, rfd.Day), (rfd.Year % RYNN_LEAP_INTERVAL == 0));
+
+                int offsetDays = GetRynnTotalDaysForMonthDays(new RynnMonthDays(CommonPointRynn.Month, CommonPointRynn.Day), false);
+
+                deltaDays = daysFromYear + daysFromDate - offsetDays;
+            }
+            else if(rfd.Era >= 3) 
+            {
+
+            }
+            else
+            {
+                //unsolvable date
+                return new DateTime(0); //shitty sentinel
+            }
+
+
+            //run a calculation
+            TimeSpan offset = new TimeSpan(deltaDays, 0, 0, 0);
+
+            DateTime dt = CommonPoint - offset;
+
+            return dt;
+        }
+
+        private int GetRynnDaysForYearInterval(int startYear, int endYear)
+        {
+            //get initial days
+            int totalDays = (endYear - startYear) * RYNN_DAYS_PER_YEAR;
+
+            //get num leap years from 0 to start year
+            int toStartLeapYears = startYear / RYNN_LEAP_INTERVAL;
+
+            //get num leap years from 0 to end year
+            int toEndLeapYears = endYear / RYNN_LEAP_INTERVAL;
+
+            //calculate
+            int extraDays = toEndLeapYears - toStartLeapYears;
+
+            return (totalDays + extraDays);
+        }
+
         private RynnFormatDate GetRynnDateForDate()
         {
             RynnFormatDate rfd = new RynnFormatDate();
@@ -173,8 +224,9 @@ namespace RynnDateConverter
                 years += 1; //a hack because eras overlap
                 int extraDays = daysOffset % RYNN_DAYS_PER_YEAR;
                 extraDays += GetRynnTotalDaysForMonthDays(new RynnMonthDays(CommonPointRynn.Month, CommonPointRynn.Day), false);
+                extraDays -= 1; //this should fix it
 
-                //handle leap years (broken)
+                //handle leap years (sort of)
                 extraDays -= years / RYNN_LEAP_INTERVAL;
 
                 //don't go negative!
